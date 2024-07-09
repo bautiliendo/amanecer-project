@@ -1,7 +1,7 @@
-import React from 'react'
+import { EmptyCart } from './EmptyCart'
 
 export const Cart = () => {
   return (
-    <div>Cart</div>
+    <EmptyCart />
   )
 }
