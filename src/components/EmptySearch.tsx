@@ -4,8 +4,8 @@ export const EmptySearch = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="w-full py-32 px-4 ">
-            <div className='max-w-[1240px] mx-auto grid '>
+        <div className="w-full md:py-24 px-4 py-40">
+            <div className='mx-auto grid '>
                 <h2 className="md:text-3xl sm:text-2xl text-xl font-bold py-2">¿Cómo Comprar?</h2>
                 <p className="my-4">
                     En nuestro e-commerce, puedes añadir productos a tu carrito y coordinar una compra o simplemente consultar detalles y precio de un producto a través de WhatsApp.

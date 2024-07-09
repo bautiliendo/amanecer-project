@@ -8,6 +8,7 @@ import { Comprar } from "./components/Comprar"
 import { Cart } from "./components/Cart"
 import { ButtonWsp } from "./components/common/ButtonWsp"
 import { ScrollTop } from "./helpers/ScrollTop"
+import { PoliticaDev } from "./components/PoliticaDev"
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/comprar" element={<Comprar />} />
         <Route path="/equipo" element={<Equipo />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/politicadev" element={<PoliticaDev />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <ButtonWsp />
