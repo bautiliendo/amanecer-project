@@ -86,7 +86,7 @@ export const NavBar: React.FC = () => {
                             <img src={Logo} style={{ width: 190, cursor: 'pointer' }} onClick={(e) => { handleLogoRedirect(e); handleNav() }} alt="Logo amancer by bagués" />
                         </div>
                         <ul className="uppercase p-4 font-bold">
-                            <li className='p-4 border-b border-gray-600 hover:underline'><Link to={'/productos'} onClick={handleNav}>Productos</Link></li>
+                            <li className='p-4 border-b border-gray-600 hover:underline'><Link to={'/products'} onClick={handleNav}>Productos</Link></li>
                             <li className='p-4 border-b border-gray-600 hover:underline'><Link to={'/comprar'} onClick={handleNav}>¿Cómo Comprar?</Link></li>
                             <li className='p-4 border-b border-gray-600 hover:underline'><Link to={'/equipo'} onClick={handleNav}>Equipo</Link></li>
                             <li className='p-4 border-b border-gray-600'>

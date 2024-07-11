@@ -1,4 +1,6 @@
 import Foto1 from '../assets/equipo1.jpg'
+import Foto2 from '../assets/equipo2.jpg'
+import Foto3 from '../assets/equipo3.jpg'
 
 export const Equipo: React.FC = () => {
   return (
@@ -14,7 +16,7 @@ export const Equipo: React.FC = () => {
         <div className="overflow-hidden bg-white rounded-md shadow">
           <div className="px-8 py-12">
             <div className="relative w-24 h-24 mx-auto">
-              <img className="relative object-cover w-24 h-24 mx-auto rounded-full" src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/1/avatar-1.jpg" alt="Carla Fernández" />
+              <img className="relative object-cover w-24 h-24 mx-auto rounded-full" src={Foto3} alt="Carla Fernández" />
               <div className="absolute top-0 right-0 flex items-center justify-center bg-[#68270C] rounded-full w-7 h-7">
                 <svg className="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                   <path
@@ -24,9 +26,9 @@ export const Equipo: React.FC = () => {
               </div>
             </div>
             <blockquote className="mt-7">
-              <p className="text-lg text-black">“Bagués me ha permitido crecer de manera independiente. Ahora tengo mi propio negocio y manejo mis horarios. ¡La formación es excelente!”</p>
+              <p className="text-lg text-black">"Con Bagués vivo bien y puedo cumplir mis sueños y ayudar a otros. No hay nada más hermoso que ver a la gente empoderarse y vivir felices con lo que hacen. Estoy muy agradecida por eso."</p>
             </blockquote>
-            <p className="text-base font-semibold text-black mt-9">Gabriela Ludueña</p>
+            <p className="text-base font-semibold text-black mt-9">Victoria Vargas</p>
             <p className="mt-1 text-base text-gray-600">Emprendedora en Córdoba</p>
           </div>
         </div>
@@ -34,7 +36,7 @@ export const Equipo: React.FC = () => {
         <div className="overflow-hidden bg-white rounded-md shadow">
           <div className="px-8 py-12">
             <div className="relative w-24 h-24 mx-auto">
-              <img className="relative object-cover w-24 h-24 mx-auto rounded-full" src="https://cdn.rareblocks.xyz/collection/celebration/images/testimonials/1/avatar-2.jpg" alt="Martín López" />
+              <img className="relative object-cover w-24 h-24 mx-auto rounded-full" src={Foto2} alt="Martín López" />
               <div className="absolute top-0 right-0 flex items-center justify-center bg-[#68270C] rounded-full w-7 h-7">
                 <svg className="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                   <path
@@ -44,10 +46,10 @@ export const Equipo: React.FC = () => {
               </div>
             </div>
             <blockquote className="mt-7">
-              <p className="text-lg text-black">Bagués para mí se convirtió en una columna vital de mi vida. Más allá de ser muy buenos productos, al salir a ofrecer hago amigos y comparto risas y mates. Hace bien al corazón.
+              <p className="text-lg text-black">"En el momento justo, conocí Bagués: sus productos, calidad y precio fueron determinantes para elegirlos como opción laboral y de crecimiento. Además, contar con nuestra directora, que nos guía y alienta constantemente, ha sido un verdadero privilegio. ¡Gracias, Bagués!"
               </p>
             </blockquote>
-            <p className="text-base font-semibold text-black mt-9">Fabiana Ferreyra</p>
+            <p className="text-base font-semibold text-black mt-9">Karina Carballo</p>
             <p className="mt-1 text-base text-gray-600">Emprendedora en Córdoba</p>
           </div>
         </div>

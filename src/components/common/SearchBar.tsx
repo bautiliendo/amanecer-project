@@ -29,7 +29,7 @@ export const SearchBar: React.FC = () => {
   }
 
   return (
-    <div className="justify-center hidden lg:flex">
+    <div className="justify-center">
       <form className="flex w-full max-w-md mx-4 border-2 border-yellow-800 rounded-lg overflow-hidden" onSubmit={handleSearch}>
         <input
           type='text'
