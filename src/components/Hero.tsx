@@ -2,6 +2,7 @@ import { useState } from "react"
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs"
 import { RxDotFilled } from "react-icons/rx"
 import { useNavigate } from "react-router-dom"
+import { Products } from "./Products"
 
 export const Hero: React.FC = () => {
   const navigate = useNavigate();
@@ -36,6 +37,7 @@ export const Hero: React.FC = () => {
   }
 
   return (
+    <>
     <div className="w-full md:py-24 px-4 py-40">
       <div className="flex flex-col md:flex-row items-center justify-between gap-8">
         <div className="w-full md:w-1/2 flex flex-col items-start justify-center">
@@ -69,5 +71,7 @@ export const Hero: React.FC = () => {
         </div>
       </div>
     </div>
+    <Products />
+    </>
   )
 }

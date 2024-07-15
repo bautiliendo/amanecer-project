@@ -51,7 +51,7 @@ export const Footer: React.FC = () => {
           <div>
             <h6 className='font-bold text-sm sm:text-base'>Redes</h6>
             <ul>
-              <a href='https://www.instagram.com/renovartecba/' target="_blank" rel="noopener noreferrer">
+              <a href='https://www.instagram.com/amanecer_bybagues/' target="_blank" rel="noopener noreferrer">
                 <li className='py-2 text-sm hover:text-rose-400 hover:underline list-none'>Instagram</li>
               </a>
               <button onClick={handleWhatsapp}>
