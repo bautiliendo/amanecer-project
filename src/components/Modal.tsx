@@ -1,6 +1,7 @@
 import { FaWhatsapp } from "react-icons/fa";
 import { MdOutlineClose } from "react-icons/md";
-// import { useCart } from "../hooks/useCart";
+import { useCart } from "../hooks/useCart";
+
 
 interface ModalProps {
   open: boolean;
@@ -8,24 +9,26 @@ interface ModalProps {
 }
 
 export const Modal: React.FC<ModalProps> = ({ open, onClose }) => {
+  const { cart } = useCart();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    //    const { cart } = useCart();
 
     e.preventDefault();
     const form = e.currentTarget;
     const nombre = (form.elements.namedItem('nombre') as HTMLInputElement).value;
     const ciudad = (form.elements.namedItem('ciudad') as HTMLInputElement).value;
     const barrio = (form.elements.namedItem('barrio') as HTMLInputElement).value;
+    const pago = (form.elements.namedItem('pago') as HTMLInputElement).value;
 
 
-    const detalleCart = '' //cart.map(product => `${product.quantity} ${product.title}`).join(', ');
+    const detalleCart = cart.map(product => `${product.quantity} ${product.name}`).join(', ')
     const mensaje = `Hola! Mi nombre es ${nombre}. Me contacto desde su página web para preguntar por la compra de:
     
         *${detalleCart}*
     
         *Ciudad:* ${ciudad}
-        *Barrio:* ${barrio}`;
+        *Barrio:* ${barrio}
+        *Forma de pago:* ${pago}`;
 
     const numeroTel = '5493516126331';
 
@@ -65,6 +68,13 @@ export const Modal: React.FC<ModalProps> = ({ open, onClose }) => {
           <div className="mb-2">
             <label htmlFor="barrio" className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Barrio *</label>
             <input type="text" id="barrio" className="border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:bg-gray-700 dark:focus:border-blue-500 dark:focus:ring-blue-500" placeholder="General Paz / Arguello" required />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="pago" className="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Forma de pago</label>
+            <select id="pago" className="border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:bg-gray-700 dark:focus:border-blue-500 dark:focus:ring-blue-500">
+              <option value="Efectivo">Efectivo</option>
+              <option value="Transferencia" selected>Transferencia</option>
+            </select>
           </div>
           <button
             type="submit"

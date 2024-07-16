@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { AiOutlineShoppingCart, AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from '../../assets/logo.jpg'
 import { SearchBar } from "./SearchBar";
+import { useCart } from "../../hooks/useCart";
 
 export const NavBar: React.FC = () => {
-    //const { cart } = useCart();
+    const { cart } = useCart();
 
     const [nav, setNav] = useState<boolean>(false);
     const { pathname } = useLocation();
@@ -15,9 +16,9 @@ export const NavBar: React.FC = () => {
         setNav(!nav);
     }
 
-    // const cartQuantity = useMemo(()  > {
-    // return cart.reduce((accum, item) => accum + item.quantity, 0)
-    // }, [cart]);
+    const cartQuantity = useMemo(() => {
+        return cart.reduce((accum, item) => accum + item.quantity, 0)
+    }, [cart]);
 
     const handleLogoRedirect = (e: React.MouseEvent<HTMLImageElement>) => {
         e.preventDefault();
@@ -43,14 +44,14 @@ export const NavBar: React.FC = () => {
                     </ul>
                     <div className='mx-10 hidden md:flex hover:scale-[1.04]'>
                         <Link to='/cart'><AiOutlineShoppingCart size={25} /></Link>
-                        {/* 
-                        cart.length >= 1 ? (
-                            <Link to='/cart'>
-                                <button className='absolute bg-[#00df9a] text-black px-1.5 rounded-full text-xs my-1.5' >{cartQuantity}</button>
-                            </Link> 
-                         )
-                            : ''
-                        */}
+                        {
+                            cart.length >= 1 ? (
+                                <Link to='/cart'>
+                                    <button className='absolute bg-[#68270C] text-white px-1.5 rounded-full text-xs my-1.5' >{cartQuantity}</button>
+                                </Link>
+                            )
+                                : ''
+                        }
                     </div>
                 </div>
 
@@ -60,12 +61,12 @@ export const NavBar: React.FC = () => {
                             <Link to='/cart' >
                                 <AiOutlineShoppingCart size={25} />
                             </Link>
-                            {/* {cart.length >= 1 && (
+                            {cart.length >= 1 && (
 
-                                <Link to='/carrito'>
-                                    <button className='ml-1 bg-[#00df9a] text-black px-1.5 rounded-full text-xs'>{cartQuantity}</button>
+                                <Link to='/cart'>
+                                    <button className='ml-1 bg-[#68270C] text-white px-1.5 rounded-full text-xs'>{cartQuantity}</button>
                                 </Link>
-                            )} */}
+                            )}
                         </div>
                     </div>
                     <div>
@@ -90,18 +91,18 @@ export const NavBar: React.FC = () => {
                             <li className='p-4 border-b border-gray-600 hover:underline'><Link to={'/comprar'} onClick={handleNav}>¿Cómo Comprar?</Link></li>
                             <li className='p-4 border-b border-gray-600 hover:underline'><Link to={'/equipo'} onClick={handleNav}>Equipo</Link></li>
                             <li className='p-4 border-b border-gray-600'>
-                                {/* {cart.length >= 1 ? (
+                                {cart.length >= 1 ? (
                                     <div className='flex gap-1 items-center'>
-                                        <Link to='/carrito' onClick={handleNav}><li className=' hover:underline'>Carrito</li></Link>
-                                        <Link to='/carrito' className='mb-4' onClick={handleNav}>
-                                            <button className='absolute bg-[#00df9a] text-black px-1.5 rounded-full text-xs' >{cartQuantity}</button>
+                                        <Link to='/cart' onClick={handleNav}><li className=' hover:underline'>Carrito</li></Link>
+                                        <Link to='/cart' className='mb-4' onClick={handleNav}>
+                                            <button className='absolute bg-[#68270C] text-white px-1.5 rounded-full text-xs' >{cartQuantity}</button>
                                         </Link>
                                     </div>
                                 )
                                     : (
-                                        <Link to='/carrito' onClick={handleNav}><li className=' hover:underline'>Carrito</li></Link>
+                                        <Link to='/cart' onClick={handleNav}><li className=' hover:underline'>Carrito</li></Link>
                                     )
-                                } */}
+                                }
                             </li>
                         </ul>
                     </div>

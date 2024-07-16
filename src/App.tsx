@@ -9,6 +9,7 @@ import { Cart } from "./components/Cart"
 import { ButtonWsp } from "./components/common/ButtonWsp"
 import { ScrollTop } from "./helpers/ScrollTop"
 import { PoliticaDev } from "./components/PoliticaDev"
+import { ProductDetail } from "./components/ProductDetail"
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Hero />} />
         <Route path="/products" element={<Products />} />
-        {/* <Route path="/products/:productTitle" element={<ProductDetail />} /> */}
+        <Route path="/products/:productTitle" element={<ProductDetail />} />
         <Route path="/comprar" element={<Comprar />} />
         <Route path="/equipo" element={<Equipo />} />
         <Route path="/cart" element={<Cart />} />
