@@ -31,7 +31,7 @@ export const RenderProducts: React.FC = () => {
         <>
             {
                 filteredProducts.length >= 1 ? (
-                    <ul className=' flex flex-wrap justify-center max-w-[1500px] mx-auto gap-4 mt-4'>
+                    <ul className=' flex flex-wrap justify-center max-w-[1500px] mx-auto gap-2 mt-2'>
                         {filteredProducts.map((product) => {
                             const isProductnCart = checkProductInCart(product);
                             return (

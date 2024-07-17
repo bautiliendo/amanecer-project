@@ -35,8 +35,8 @@ export const ProductDetail = () => {
 
   return (
     <div className='w-full py-32 px-4'>
+      <button className='mb-4 flex gap-2 justify-center sm:hidden border-solid rounded-md p-1' onClick={handleGoBack}><p className='font-bold'>Volver</p><RiArrowGoBackFill size={20} className='pt-1' /></button>
       <div className="gap-2 bg-white w-full mx-auto md:flex max-w-auto min-w-auto xl:max-w-[1240px] xl:min-w-[1240px]">
-        <button className='mb-4 flex gap-2 justify-center sm:hidden border-solid rounded-md p-1' onClick={handleGoBack}><p className='font-bold'>Volver</p><RiArrowGoBackFill size={20} className='pt-1' /></button>
         <div className='flex justify-center items-center border-solid border-2 rounded-lg md:shadow-lg min-w-[40%]'>
           <img src={product.images[1]} alt={product.name} className="h-60 w-60  sm:h-80 sm:w-80 rounded-md p-3" />
         </div>

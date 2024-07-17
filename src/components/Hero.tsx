@@ -38,7 +38,7 @@ export const Hero: React.FC = () => {
 
   return (
     <>
-    <div className="w-full md:py-24 px-4 py-40">
+    <div className="w-full md:pt-24 px-4 pt-40 sm:pb-20 pb-0">
       <div className="flex flex-col md:flex-row items-center justify-between gap-8">
         <div className="w-full md:w-1/2 flex flex-col items-start justify-center">
           <h1 className="text-3xl sm:text-4xl font-bold mb-4">Amanecer By Bagués - CBA</h1>

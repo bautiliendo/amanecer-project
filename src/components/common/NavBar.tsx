@@ -37,7 +37,7 @@ export const NavBar: React.FC = () => {
                 </div>
                 <div className="flex flex-grow justify-end items-center">
                     <ul className='hidden md:flex items-center font-bold text-md gap-10 '>
-                        <SearchBar />
+                        <li className="hidden lg:block"><SearchBar /></li>
                         <li className=' hover:scale-[1.04] '><Link to='/products'>Productos</Link></li>
                         <li className=' hover:scale-[1.04] '><Link to='/comprar'>¿Cómo comprar?</Link></li>
                         <li className=' hover:scale-[1.04] '><Link to='/equipo'>Equipo</Link></li>
