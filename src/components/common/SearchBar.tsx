@@ -1,31 +1,31 @@
 import { AiOutlineSearch } from "react-icons/ai";
 import { useState } from "react";
-// import { useFiltersContext } from "../hooks/useFiltersContext";
-// import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useFilters } from "../../hooks/useFilters";
 
 export const SearchBar: React.FC = () => {
-  // const { pathname } = useLocation();
-  // const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
   const [searchInput, setSearchInput] = useState('');
-  // const { setFilters } = useFiltersContext()
+  const { setFilters } = useFilters()
 
   const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    //     setSearchInput(event.target.value);
+    setSearchInput(event.target.value);
   }
 
   const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
-    //     event.preventDefault();
-    //     if ((searchInput != '') && !(searchInput.startsWith(' '))) {
+    event.preventDefault();
+    if ((searchInput != '') && !(searchInput.startsWith(' '))) {
 
-    //         setFilters({
-    //             category: '',
-    //             searched: searchInput
-    //         });
-    //         navigate('/productos')
-    //         if (pathname != '/') {
-    //             window.scrollTo(0, 0);
-    //         }
-    //     } else return
+      setFilters({
+        category: '',
+        searched: searchInput
+      });
+      navigate('/products')
+      if (pathname != '/') {
+        window.scrollTo(0, 0);
+      }
+    } else return
   }
 
   return (
@@ -48,3 +48,4 @@ export const SearchBar: React.FC = () => {
     </div>
   );
 }
+

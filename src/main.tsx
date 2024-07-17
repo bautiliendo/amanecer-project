@@ -4,13 +4,16 @@ import App from './App.tsx'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import { CartProvider } from './context/cart.tsx'
+import { FiltersProvider } from './context/filters.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
-      <CartProvider>
-        <App />
-      </CartProvider>
+      <FiltersProvider>
+        <CartProvider>
+          <App />
+        </CartProvider>
+      </FiltersProvider>
     </BrowserRouter>
   </React.StrictMode>,
 )

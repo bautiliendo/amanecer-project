@@ -1,5 +1,5 @@
 import { createContext, useReducer } from "react";
-import { CartContextType, CartProduct, CartProviderProps } from "../types";
+import { CartContextType, CartProduct, ProviderProps } from "../types";
 import { cartInitialState, cartReducer } from "../reducers/cart";
 
 
@@ -28,7 +28,7 @@ function useCartReducer() {
     return { state, addToCart, removeFromCart, removeItemFromCart, clearCart }
 }
 
-export function CartProvider({ children }: CartProviderProps) {
+export function CartProvider({ children }: ProviderProps) {
     const { state, addToCart, removeFromCart, removeItemFromCart, clearCart } = useCartReducer();
     return (
         <CartContext.Provider value={{

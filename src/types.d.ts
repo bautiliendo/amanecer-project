@@ -22,7 +22,7 @@ export interface CartContextType {
   removeItemFromCart: (product: CartProduct) => void;
 }
 
-interface CartProviderProps {
+export interface ProviderProps {
   children: ReactNode;
 }
 
@@ -36,3 +36,15 @@ export interface FiltersType {
   category: string;
   searched: string;
 }
+
+
+//TYPES filter context
+
+export interface FiltersContextType {
+  filters: FiltersType;
+  setFilters: (filters: FiltersType) => void;
+  filterProducts: (producto: Producto[]) => Producto[];
+}
+
+
+

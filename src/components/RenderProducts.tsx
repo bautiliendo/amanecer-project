@@ -5,10 +5,12 @@ import { MdAddShoppingCart, MdRemoveShoppingCart } from 'react-icons/md';
 import { useCart } from '../hooks/useCart';
 import { EmptySearch } from './EmptySearch';
 import { Link } from 'react-router-dom';
+import { useFilters } from '../hooks/useFilters';
 
 export const RenderProducts: React.FC = () => {
     const [products, setProducts] = useState<Product[]>([]);
     const { cart, addToCart, removeItemFromCart } = useCart()
+    const { filterProducts } = useFilters();
 
     useEffect(() => {
         axios.get('http://localhost:3001/getProducts')
@@ -23,12 +25,14 @@ export const RenderProducts: React.FC = () => {
         return cart.some(item => item.productId === product.productId);
     }
 
+    const filteredProducts = filterProducts(products)
+
     return (
         <>
             {
-                products.length >= 1 ? (
+                filteredProducts.length >= 1 ? (
                     <ul className=' flex flex-wrap justify-center max-w-[1500px] mx-auto gap-4 mt-4'>
-                        {products.map((product) => {
+                        {filteredProducts.map((product) => {
                             const isProductnCart = checkProductInCart(product);
                             return (
                                 <li key={product.name} className='bg-white border-solid border-2 rounded-lg shadow-lg sm:max-w-[250px] sm:min-w-[250px] max-w-[170px] min-w-[170px] py-6 flex flex-col items-center transition-transform transform hover:border-gray-300'>
@@ -42,12 +46,12 @@ export const RenderProducts: React.FC = () => {
                                             <div className='font-semibold text-center text-sm' style={{ minHeight: '4em' }}>
                                                 {product.name}
                                             </div>
+                                                <span className='font-semibold'>${product.price}</span>
                                         </div>
                                     </Link>
                                     <div className='mt-2 flex gap-2 items-center'>
-                                            <div className='font-semibold text-center text-sm'>
-                                                ${product.price}
-                                            </div>
+                                        <div className='font-semibold text-center text-sm'>
+                                        </div>
                                         {
                                             isProductnCart
                                                 ?
