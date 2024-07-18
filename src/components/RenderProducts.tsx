@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import axios from 'axios';
 import { Product } from '../types';
 import { MdAddShoppingCart, MdRemoveShoppingCart } from 'react-icons/md';
@@ -13,7 +13,7 @@ export const RenderProducts: React.FC = () => {
     const { filterProducts } = useFilters();
 
     useEffect(() => {
-        axios.get('http://localhost:3001/getProducts')
+        axios.get('https://backend-amanecer.up.railway.app/getProducts')
             .then(response => {
                 console.log("Received data:", response.data);
                 setProducts(response.data);
@@ -21,9 +21,9 @@ export const RenderProducts: React.FC = () => {
             .catch(err => console.log(err))
     }, []);
 
-    const checkProductInCart = (product: Product) => {
+    const checkProductInCart = useCallback((product: Product) => {
         return cart.some(item => item.productId === product.productId);
-    }
+    }, [cart]);
 
     const filteredProducts = filterProducts(products)
 
@@ -35,18 +35,18 @@ export const RenderProducts: React.FC = () => {
                         {filteredProducts.map((product) => {
                             const isProductnCart = checkProductInCart(product);
                             return (
-                                <li key={product.name} className='bg-white border-solid border-2 rounded-lg shadow-lg sm:max-w-[250px] sm:min-w-[250px] max-w-[170px] min-w-[170px] py-6 flex flex-col items-center transition-transform transform hover:border-gray-300'>
+                                <li key={product.productId} className='bg-white border-solid border-2 rounded-lg shadow-lg sm:max-w-[250px] sm:min-w-[250px] max-w-[170px] min-w-[170px] py-6 flex flex-col items-center transition-transform transform hover:border-gray-300'>
                                     <Link to={`/products/${encodeURIComponent(product.name)}`} className='w-full h-full flex flex-col items-center'>
                                         <img
                                             style={{ width: 200, maxHeight: 200, minHeight: 160 }}
-                                            src={product.images[1]}
+                                            src={product.images[0]}
                                             alt={product.name}
                                             className='py-2 px-2' />
                                         <div className='flex flex-col flex-grow items-center'>
                                             <div className='font-semibold text-center text-sm' style={{ minHeight: '4em' }}>
                                                 {product.name}
                                             </div>
-                                                <span className='font-semibold'>${product.price}</span>
+                                            <span className='font-semibold'>${product.price}</span>
                                         </div>
                                     </Link>
                                     <div className='mt-2 flex gap-2 items-center'>

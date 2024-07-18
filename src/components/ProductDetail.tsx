@@ -15,7 +15,7 @@ export const ProductDetail = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:3001/getProducts')
+    axios.get('https://backend-amanecer.up.railway.app/getProducts')
       .then(response => {
         console.log("Received data:", response.data);
         setProducts(response.data);
@@ -35,13 +35,14 @@ export const ProductDetail = () => {
 
   return (
     <div className='w-full py-32 px-4'>
-      <button className='mb-4 flex gap-2 justify-center sm:hidden border-solid rounded-md p-1' onClick={handleGoBack}><p className='font-bold'>Volver</p><RiArrowGoBackFill size={20} className='pt-1' /></button>
-      <div className="gap-2 bg-white w-full mx-auto md:flex max-w-auto min-w-auto xl:max-w-[1240px] xl:min-w-[1240px]">
-        <div className='flex justify-center items-center border-solid border-2 rounded-lg md:shadow-lg min-w-[40%]'>
-          <img src={product.images[1]} alt={product.name} className="h-60 w-60  sm:h-80 sm:w-80 rounded-md p-3" />
+      <button className='mb-4 flex gap-2 justify-center sm:hidden border-solid p-1' onClick={handleGoBack}><p className='font-bold'>Volver</p><RiArrowGoBackFill size={20} className='pt-1' /></button>
+      <div className="gap-2 bg-white w-full mx-auto md:flex max-w-auto min-w-auto xl:max-w-[1240px] xl:min-w-[1240px] rounded-md">
+        <div className='flex justify-center items-center md:shadow-lg min-w-[40%]'>
+          <img src={product.images[0]} alt={product.name} className="h-60 w-60  sm:h-80 sm:w-80 rounded-md p-3" />
         </div>
-        <div className='flex flex-col rounded-lg shadow-lg p-2'>
-          <h1 className="text-2xl font-bold mb-4 p-2">{product.name} ${product.price}</h1>
+        <div className='flex flex-col shadow-lg p-2'>
+          <h1 className="text-2xl font-bold mb-4 p-2">{product.name}</h1>
+          <h2 className='text-xl font-bold mb-4 p-2'>${product.price}</h2>
           <p className='text-sm mb-4 p-3'>{product.description ? (
             <>
               {product.description}
@@ -52,11 +53,11 @@ export const ProductDetail = () => {
           )
           }</p>
 
-          <div className='p-3 flex rounded-sm gap-2 mb-2'>
+          <div className='p-3 flex gap-2 mb-2'>
             <HiOutlineTruck size={25} />
             <p className='font-bold'> Envío <strong className='text-[#68270C]'>GRATIS</strong> a Córdoba Capital</p>
           </div>
-          <div className='border flex rounded-sm p-3'>
+          <div className='flex p-3'>
             {isProductInCart ? (
               <button onClick={() => removeItemFromCart({ ...product, quantity: 1 })} className="flex items-center px-3 py-1 border border-transparent rounded-md shadow-sm text-xs font-medium text-white bg-[#e76e49] hover:bg-[#b84e40] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition">
                 <p className='font-bold text-lg'>Eliminar del carrito</p>

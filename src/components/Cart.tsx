@@ -28,7 +28,7 @@ export const Cart: React.FC = () => {
             <button className='mb-4 flex gap-1 justify-center sm:hidden border-solid rounded-md p-1' onClick={handleGoBack}><p className='font-bold'>Volver</p><RiArrowGoBackFill size={20} className='pt-1' /></button>
             <div className="flex flex-col md:flex-row gap-2">
               <div className="md:w-2/3">
-                <div className="bg-white shadow overflow-hidden sm:rounded-lg p-6">
+                <div className="bg-white shadow-lg overflow-hidden sm:rounded-lg p-6">
                   <h2 className="text-xl font-bold mb-4">Productos en el carrito</h2>
                   <ul className="space-y-4">
                     {cart.map((product) => (
@@ -75,7 +75,7 @@ export const Cart: React.FC = () => {
               </div>
 
               <div className="md:w-1/3">
-                <div className="bg-white shadow overflow-hidden sm:rounded-lg p-6">
+                <div className="bg-white shadow-lg overflow-hidden sm:rounded-lg p-6">
                   <h2 className="text-xl font-bold mb-4">Resumen del pedido</h2>
                   <div className="space-y-2">
                     {cart.map((product) => (
