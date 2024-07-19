@@ -6,7 +6,7 @@ export const FiltersContext = createContext<FiltersContextType | undefined>(unde
 
 export const FiltersProvider: React.FC<ProviderProps> = ({ children }) => {
     const [filters, setFilters] = useState({
-        category: 'fragancia',
+        category: 'fragancia-femenina',
         searched: ''
     })
 

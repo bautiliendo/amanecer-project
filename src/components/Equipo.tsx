@@ -4,6 +4,7 @@ import Foto2 from '../assets/equipo2.jpg';
 import Foto3 from '../assets/equipo3.jpg';
 import Foto4 from '../assets/equipo4.jpg';
 import Foto5 from '../assets/equipo5.jpg';
+import { Button } from './common/Button';
 
 interface Member {
   name: string;
@@ -91,21 +92,11 @@ export const Equipo: React.FC = () => {
 
       {!showMore ? (
         <div className="flex justify-center mt-8">
-          <button
-            onClick={() => setShowMore(true)}
-            className="bg-[#B29A82] text-[#68270C] font-bold px-4 py-2 rounded"
-          >
-            Ver más
-          </button>
+          <Button text={"Ver más"} onClick={() => setShowMore(true)}/>
         </div>
       ) : (
         <div className="flex justify-center mt-8">
-          <button
-            onClick={() => setShowMore(false)}
-            className="bg-[#B29A82] text-[#68270C] font-bold px-4 py-2 rounded"
-          >
-           Ver menos
-          </button>
+          <Button text={"Mostrar menos"} onClick={() => setShowMore(false)}/>
         </div>
       )}
     </div>

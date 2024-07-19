@@ -6,16 +6,19 @@ export const Ofertas = () => {
     const { slides, currentIndex, prevSlide, nextSlide, goToSlide } = useOfers();
 
     if (!slides.length) {
-        return <div>Loading...</div>; // Opcional: mostrar un mensaje de carga
+        return <div>Cargando ...</div>;
     }
 
     return (
         <div className="relative w-full h-full">
             <h2 className="text-xl text-[#68270C] font-bold py-1">OFERTAS SEMANALES</h2>
-            <div
-                style={{ backgroundImage: `url(${slides[currentIndex].images[1]})` }}
-                className="w-full h-full rounded-2xl bg-center bg-contain duration-500"
-            ></div>
+            <div className="relative w-full h-auto">
+                <img 
+                    src={slides[currentIndex].images[1]} 
+                    className="w-full h-auto object-contain rounded-2xl" 
+                    alt="Oferta"
+                />
+            </div>
             <div className="hidden group-hover:block absolute top-1/2 -translate-y-1/2 left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
                 <BsChevronCompactLeft onClick={prevSlide} size={30} />
             </div>

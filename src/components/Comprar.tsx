@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import { Button } from "./common/Button"
 
 export const Comprar: React.FC = () => {
   const navigate = useNavigate()
@@ -20,7 +21,9 @@ export const Comprar: React.FC = () => {
             incluirá tus datos ingresados y la descripción de los productos que hayas seleccionado.
           </li>
         </ol>
-        <button onClick={() => navigate('/products')} className="my-4 bg-[#B29A82] text-[#68270C] w-[200px] font-bold px-4 py-2 rounded ">Ver Productos</button>
+        <div className="mb-4 mt-2">
+          <Button text={"Ver productos"} onClick={() => navigate('/products')} />
+        </div>
         <p className="text-gray-700">
           <strong className='text-[#68270C]'>¡Es fácil y rápido!</strong> Si tienes alguna duda, no dudes en contactarnos.
         </p>

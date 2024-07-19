@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
 
 export interface Product {
-  productId: number;
+  _id: number;
   name: string;
   description: string;
-  price: number;
+  price: string;
   category: string;
   images: string[];
   isOnPromotion: boolean;

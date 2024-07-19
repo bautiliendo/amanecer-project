@@ -22,7 +22,6 @@ export const Footer: React.FC = () => {
         <div className='flex flex-col gap-2.5 sm:gap-5'>
           <div className=''><img src={Logo} style={{ width: 190 }} alt="Logo" /></div>
           <p className=''>Amanecer By Bagués ©</p>
-          <p className=''><Link to='/' className='underline'>Términos y condiciones</Link></p>
           <p className=''> <Link to='/politicadev' className='underline'>Política de devolución</Link></p>
           <div className='flex md:w-[75%] gap-4'>
             <a href='https://www.instagram.com/amanecer_bybagues/' target="_blank" rel="noopener noreferrer"><FaInstagram size={30} /></a>

@@ -15,7 +15,8 @@ export const ProductDetail = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('https://backend-amanecer.up.railway.app/getProducts')
+    axios.get('http://localhost:3001/getProducts')
+      // ('https://backend-amanecer.up.railway.app/getProducts')
       .then(response => {
         console.log("Received data:", response.data);
         setProducts(response.data);
@@ -27,7 +28,7 @@ export const ProductDetail = () => {
     return <div className='text-white'>Product No encontrado</div>
   }
 
-  const isProductInCart = cart.some(item => item.productId === product.productId);
+  const isProductInCart = cart.some(item => item._id === product._id);
 
   const handleGoBack = () => {
     navigate(-1)
@@ -42,7 +43,7 @@ export const ProductDetail = () => {
         </div>
         <div className='flex flex-col shadow-lg p-2'>
           <h1 className="text-2xl font-bold mb-4 p-2">{product.name}</h1>
-          <h2 className='text-xl font-bold mb-4 p-2'>${product.price}</h2>
+          <h2 className='text-xl font-bold mb-4 p-2'>{product.price}</h2>
           <p className='text-sm mb-4 p-3'>{product.description ? (
             <>
               {product.description}

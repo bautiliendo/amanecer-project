@@ -32,10 +32,10 @@ export const Cart: React.FC = () => {
                   <h2 className="text-xl font-bold mb-4">Productos en el carrito</h2>
                   <ul className="space-y-4">
                     {cart.map((product) => (
-                      <li key={product.productId} className="border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
+                      <li key={product._id} className="border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
                         <div className="flex items-center space-x-4">
                           <div className="flex-shrink-0">
-                            <img className="h-24 w-24 object-cover rounded-md" src={product.images[1]} alt={product.name} />
+                            <img className="h-24 w-24 object-cover rounded-md" src={product.images[0]} alt={product.name} />
                           </div>
                           <div className="flex-1 min-w-0">
                             <Link to={`/products/${encodeURIComponent(product.name)}`}>
@@ -56,7 +56,7 @@ export const Cart: React.FC = () => {
                             </div>
                           </div>
                           <div className="text-right">
-                            <p className="text-lg font-bold">${(product.price * product.quantity).toFixed(2)}</p>
+                            <p className="text-lg font-bold">{(product.price * product.quantity).toFixed(2)}</p>
                           </div>
                         </div>
                       </li>
@@ -79,9 +79,9 @@ export const Cart: React.FC = () => {
                   <h2 className="text-xl font-bold mb-4">Resumen del pedido</h2>
                   <div className="space-y-2">
                     {cart.map((product) => (
-                      <div key={product.productId} className="flex justify-between">
+                      <div key={product._id} className="flex justify-between">
                         <span>{product.name} (x{product.quantity})</span>
-                        <span>${(product.price * product.quantity).toFixed(2)}</span>
+                        <span>{(product.price * product.quantity).toFixed(2)}</span>
                       </div>
                     ))}
                   </div>

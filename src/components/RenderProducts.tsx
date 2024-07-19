@@ -13,7 +13,8 @@ export const RenderProducts: React.FC = () => {
     const { filterProducts } = useFilters();
 
     useEffect(() => {
-        axios.get('https://backend-amanecer.up.railway.app/getProducts')
+        axios.get('http://localhost:3001/getProducts')
+            // ('https://backend-amanecer.up.railway.app/getProducts')
             .then(response => {
                 console.log("Received data:", response.data);
                 setProducts(response.data);
@@ -22,7 +23,7 @@ export const RenderProducts: React.FC = () => {
     }, []);
 
     const checkProductInCart = useCallback((product: Product) => {
-        return cart.some(item => item.productId === product.productId);
+        return cart.some(item => item._id === product._id);
     }, [cart]);
 
     const filteredProducts = filterProducts(products)
@@ -35,7 +36,7 @@ export const RenderProducts: React.FC = () => {
                         {filteredProducts.map((product) => {
                             const isProductnCart = checkProductInCart(product);
                             return (
-                                <li key={product.productId} className='bg-white border-solid border-2 rounded-lg shadow-lg sm:max-w-[250px] sm:min-w-[250px] max-w-[170px] min-w-[170px] py-6 flex flex-col items-center transition-transform transform hover:border-gray-300'>
+                                <li key={product._id} className='bg-white border-solid border-2 rounded-lg shadow-lg sm:max-w-[250px] sm:min-w-[250px] max-w-[170px] min-w-[170px] py-6 flex flex-col items-center transition-transform transform hover:border-gray-300'>
                                     <Link to={`/products/${encodeURIComponent(product.name)}`} className='w-full h-full flex flex-col items-center'>
                                         <img
                                             style={{ width: 200, maxHeight: 200, minHeight: 160 }}
@@ -46,7 +47,7 @@ export const RenderProducts: React.FC = () => {
                                             <div className='font-semibold text-center text-sm' style={{ minHeight: '4em' }}>
                                                 {product.name}
                                             </div>
-                                            <span className='font-semibold'>${product.price}</span>
+                                            <span className='font-semibold'>{product.price}</span>
                                         </div>
                                     </Link>
                                     <div className='mt-2 flex gap-2 items-center'>
