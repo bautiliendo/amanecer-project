@@ -7,6 +7,16 @@ import { MdRemoveShoppingCart } from 'react-icons/md';
 import { FaWhatsapp } from 'react-icons/fa';
 import { RiArrowGoBackFill } from 'react-icons/ri';
 
+//TODO: ABSTRAER -->  Helper function to parse the price string
+const parsePrice = (price: string): number => {
+  return parseFloat(price.replace('$', '').replace('.', '').replace(',', '.'));
+}
+
+//TODO: ABSTRAER -->Helper function to format the price
+const formatPrice = (price: number): string => {
+  return price.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' });
+}
+
 export const Cart: React.FC = () => {
   const { cart, clearCart, addToCart, removeFromCart, removeItemFromCart } = useCart();
   const navigate = useNavigate();
@@ -17,7 +27,7 @@ export const Cart: React.FC = () => {
   }
 
   const calculateTotal = () => {
-    return cart.reduce((total, product) => total + (product.price * product.quantity), 0);
+    return cart.reduce((total, product) => total + (parsePrice(product.price) * product.quantity), 0);
   }
 
   return (
@@ -56,7 +66,7 @@ export const Cart: React.FC = () => {
                             </div>
                           </div>
                           <div className="text-right">
-                            <p className="text-lg font-bold">{(product.price * product.quantity).toFixed(2)}</p>
+                            <p className="text-lg font-bold">{formatPrice(parsePrice(product.price) * product.quantity)}</p>
                           </div>
                         </div>
                       </li>
@@ -81,14 +91,14 @@ export const Cart: React.FC = () => {
                     {cart.map((product) => (
                       <div key={product._id} className="flex justify-between">
                         <span>{product.name} (x{product.quantity})</span>
-                        <span>{(product.price * product.quantity).toFixed(2)}</span>
+                        <span>{formatPrice(parsePrice(product.price) * product.quantity)}</span>
                       </div>
                     ))}
                   </div>
                   <div className="mt-4 pt-4 pb-3.5 border-t border-gray-200">
                     <div className="flex justify-between font-bold">
                       <span>Total</span>
-                      <span>${calculateTotal().toFixed(2)}</span>
+                      <span>{formatPrice(calculateTotal())}</span>
                     </div>
                   </div>
                   <button
