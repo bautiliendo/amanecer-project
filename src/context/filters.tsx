@@ -1,18 +1,17 @@
 import { createContext, useState } from "react";
 import { FiltersContextType, Product, ProviderProps } from "../types";
 
-
 export const FiltersContext = createContext<FiltersContextType | undefined>(undefined);
 
 export const FiltersProvider: React.FC<ProviderProps> = ({ children }) => {
     const [filters, setFilters] = useState({
-        category: 'fragancia-femenina',
+        category: ['fragancia-masculina', 'fragancia-femenina'],
         searched: ''
     })
 
     const filterProducts = (products: Product[]) => {
         return products.filter((product) => {
-            const matchesCategory = filters.category === 'all' || product.category === filters.category
+            const matchesCategory = filters.category.includes('all') || filters.category.includes(product.category);
 
             if (filters.searched) {
                 const searchWords = filters.searched.toLowerCase().split(' ');
@@ -22,7 +21,7 @@ export const FiltersProvider: React.FC<ProviderProps> = ({ children }) => {
                     productWords.some(productWord => productWord.includes(word))
                 );
 
-                return matchesSearch;
+                return matchesCategory && matchesSearch;
             } else {
                 return matchesCategory;
             }
@@ -30,7 +29,6 @@ export const FiltersProvider: React.FC<ProviderProps> = ({ children }) => {
     };
 
     return (
-
         <FiltersContext.Provider value={{ filters, setFilters, filterProducts }}>
             {children}
         </FiltersContext.Provider>

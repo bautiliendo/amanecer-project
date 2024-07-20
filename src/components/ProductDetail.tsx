@@ -54,10 +54,6 @@ export const ProductDetail = () => {
           )
           }</p>
 
-          <div className='p-3 flex gap-2 mb-2'>
-            <HiOutlineTruck size={25} />
-            <p className='font-bold'> Envío <strong className='text-[#68270C]'>GRATIS</strong> a Córdoba Capital</p>
-          </div>
           <div className='flex p-3'>
             {isProductInCart ? (
               <button onClick={() => removeItemFromCart({ ...product, quantity: 1 })} className="flex items-center px-3 py-1 border border-transparent rounded-md shadow-sm text-xs font-medium text-white bg-[#e76e49] hover:bg-[#b84e40] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition">
@@ -72,6 +68,10 @@ export const ProductDetail = () => {
                 </button>
               </div>
             )}
+          </div>
+          <div className='p-3 flex gap-2 mb-2'>
+            <HiOutlineTruck size={25} />
+            <p className='font-bold'> Envío <strong className='text-[#68270C]'>GRATIS</strong> a Córdoba Capital</p>
           </div>
         </div>
       </div>
