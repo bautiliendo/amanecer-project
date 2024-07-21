@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 
 
 interface Slide {
+    name: string;
+    _id: string;
+    price: string;
     images: string[];
     isOnPromotion: boolean;
 }

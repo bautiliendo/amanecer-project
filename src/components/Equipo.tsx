@@ -81,7 +81,7 @@ export const Equipo: React.FC = () => {
         <h2 className="md:text-3xl sm:text-2xl text-xl font-bold py-2">Sumate a la familia BAGUÉS</h2>
         <p className="mt-4 text-lg text-gray-600">Haciendo realidad tus sueños. Sé tu propio jefe, manejá tus horarios, y ganá libertad económica con nuestros productos de alta demanda y formación constante.</p>
         <p className="mt-4 text-lg text-gray-600">No hace falta experiencia previa, solo necesitas ser mayor de 18 años y tener ganas de trabajar con un gran equipo. Ofrecemos ganancias del 30% al 35% con mínima inversión.</p>
-        <a href="https://mireb.bagues.com.ar/external/shared?join=101646" target="_blank" className="bg-[#B29A82] text-[#68270C] font-bold px-4 py-2 rounded mt-4 inline-block">Unirse al equipo</a>
+        <a href="https://mireb.bagues.com.ar/external/shared?join=101646" target="_blank" className="bg-[#B29A82] text-[#68270C] font-bold px-4 py-2 rounded mt-4 inline-block transform transition duration-100 hover:scale-105">Unirse al equipo</a>
       </div>
 
       <div className="grid max-w-xl grid-cols-1 mx-auto mt-8 text-center lg:max-w-full sm:mt-12 lg:mt-16 lg:grid-cols-3 gap-x-6 xl:gap-x-12 gap-y-6">

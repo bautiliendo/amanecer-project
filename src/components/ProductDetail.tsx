@@ -6,6 +6,7 @@ import { HiOutlineTruck } from "react-icons/hi2";
 import { RiArrowGoBackFill } from 'react-icons/ri';
 import { useEffect, useState } from 'react';
 import { Product } from '../types';
+import { SkeletonProductDeatail } from './SkeletonProductDetail';
 
 export const ProductDetail = () => {
   const { productTitle } = useParams<{ productTitle: string }>();
@@ -25,7 +26,7 @@ export const ProductDetail = () => {
   }, []);
 
   if (!product) {
-    return <div className='text-white'>Product No encontrado</div>
+    return <SkeletonProductDeatail />
   }
 
   const isProductInCart = cart.some(item => item._id === product._id);
