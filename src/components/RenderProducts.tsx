@@ -14,14 +14,18 @@ export const RenderProducts: React.FC = () => {
     const { filterProducts, showMore, setShowMore } = useFilters();
 
     useEffect(() => {
-        axios.get('http://localhost:3001/getProducts')
-            // ('https://backend-amanecer.up.railway.app/getProducts')
-            .then(response => {
-                console.log("Received data:", response.data); //todo: MEJORAR RENDERIZADO
-                setProducts(response.data);
-            })
-            .catch(err => console.log(err))
-    }, []);
+        const apiUrl = import.meta.env.VITE_API_URL
+        axios.get(`${apiUrl}/getProducts`)
+          .then(response => {
+            console.log("Received data:", response.data);
+            const sortedProducts = response.data.sort((a: Product, b: Product) => {
+              return a.name.localeCompare(b.name);
+            });
+            setProducts(sortedProducts);
+          })
+          .catch(err => console.log(err))
+      }, []);
+
 
     const checkProductInCart = useCallback((product: Product) => {
         return cart.some(item => item._id === product._id);

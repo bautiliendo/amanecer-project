@@ -16,11 +16,14 @@ export const ProductDetail = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:3001/getProducts')
-      // ('https://backend-amanecer.up.railway.app/getProducts')
+    const apiUrl = import.meta.env.VITE_API_URL
+    axios.get(`${apiUrl}/getProducts`)
       .then(response => {
         console.log("Received data:", response.data);
-        setProducts(response.data);
+        const sortedProducts = response.data.sort((a: Product, b: Product) => {
+          return a.name.localeCompare(b.name);
+        });
+        setProducts(sortedProducts);
       })
       .catch(err => console.log(err))
   }, []);
