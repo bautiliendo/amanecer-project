@@ -7,7 +7,7 @@ export const SearchBar: React.FC = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const [searchInput, setSearchInput] = useState('');
-  const { setFilters } = useFilters()
+  const { setFilters, setShowMore } = useFilters()
 
   const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(event.target.value);
@@ -21,6 +21,7 @@ export const SearchBar: React.FC = () => {
         category: '',
         searched: searchInput
       });
+      setShowMore(false);
       navigate('/products')
       if (pathname != '/') {
         window.scrollTo(0, 0);

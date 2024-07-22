@@ -46,12 +46,11 @@ export const ProductDetail = () => {
           <h1 className="text-2xl font-bold mb-4 p-2">{product.name}</h1>
           <h2 className='text-xl font-bold mb-4 p-2'>{product.price}</h2>
           <p className='text-sm mb-4 p-3'>{product.description ? (
-            <>
+            <p>
               {product.description}
-              <p className='py-2'>Obten más <strong className='text-[#68270C]'>información</strong> del producto, añadiendolo al carrito, <Link to='/cart' className='underline text-[#68270C] font-bold'>dirigiendote al mismo</Link> y tocando el botón Confirmar Compra.</p>
-            </>
+            </p>
           ) : (
-            <p className='py-2'>Para obtener información acerca del del producto , recuerda que debes añadirlo al carrito,<Link to='/cart' className='underline text-[#68270C]'> dirigirte al mismo</Link> y tocar el botón Confirmar Compra.</p>
+            <p className='py-2'>Obten más <strong className='text-[#68270C]'>información</strong> del producto, añadiendolo al carrito, <Link to='/cart' className='underline text-[#68270C] font-bold'>dirigiendote al mismo</Link> y tocando el botón Confirmar Compra.</p>
           )
           }</p>
 

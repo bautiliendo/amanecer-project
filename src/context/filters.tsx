@@ -4,6 +4,7 @@ import { FiltersContextType, Product, ProviderProps } from "../types";
 export const FiltersContext = createContext<FiltersContextType | undefined>(undefined);
 
 export const FiltersProvider: React.FC<ProviderProps> = ({ children }) => {
+    const [showMore, setShowMore] = useState<boolean>(false);
     const [filters, setFilters] = useState({
         category: 'fragancia-masculina',
         searched: ''
@@ -27,9 +28,9 @@ export const FiltersProvider: React.FC<ProviderProps> = ({ children }) => {
             }
         });
     };
-    
+
     return (
-        <FiltersContext.Provider value={{ filters, setFilters, filterProducts }}>
+        <FiltersContext.Provider value={{ filters, setFilters, filterProducts, showMore, setShowMore }}>
             {children}
         </FiltersContext.Provider>
     )

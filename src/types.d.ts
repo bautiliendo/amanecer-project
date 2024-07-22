@@ -37,14 +37,12 @@ export interface FiltersType {
   searched: string;
 }
 
-
 //TYPES filter context
 
 export interface FiltersContextType {
+  showMore: boolean;
+  setShowMore: React.Dispatch<React.SetStateAction<boolean>>;
   filters: FiltersType;
   setFilters: (filters: FiltersType) => void;
   filterProducts: (producto: Producto[]) => Producto[];
 }
-
-
-
