@@ -39,9 +39,9 @@ export const Cart: React.FC = () => {
                         </div>
                         <div className="flex-1 min-w-0">
                           <Link to={`/products/${encodeURIComponent(product.name)}`}>
-                            <p className="text-lg font-bold mb-2">{product.name.slice(0, 45)}</p>
+                            <p className="text-lg font-bold mb-2">{product.name.slice(0, 45)} - {formatPrice(parsePrice(product.price) * product.quantity)}</p>
                           </Link>
-                          <div className="flex items-center space-x-4 mt-2">
+                          <div className="flex items-center space-x-4 my-2">
                             <div className="flex items-center border rounded-md">
                               <button
                                 onClick={() => removeFromCart(product)}
@@ -62,13 +62,10 @@ export const Cart: React.FC = () => {
                           </div>
                           <button
                             onClick={() => removeItemFromCart(product)}
-                            className="text-[#e76e49] hover:text-[#b84e40] transition py-1 px-4 rounded-lg border border-[#e76e49] text-sm"
+                            className="text-[#e76e49] hover:text-[#b84e40] transition py-1 px-5 rounded-lg border border-[#e76e49] text-sm"
                           >
                             Eliminar
                           </button>
-                        </div>
-                        <div className="text-right">
-                          <p className="text-lg font-bold">{formatPrice(parsePrice(product.price) * product.quantity)}</p>
                         </div>
                       </div>
                     </li>

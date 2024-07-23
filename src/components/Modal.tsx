@@ -1,6 +1,7 @@
 import { FaWhatsapp } from "react-icons/fa";
 import { MdOutlineClose } from "react-icons/md";
 import { useCart } from "../hooks/useCart";
+import { formatPrice, parsePrice } from "../helpers/prices";
 
 
 interface ModalProps {
@@ -23,12 +24,12 @@ export const Modal: React.FC<ModalProps> = ({ open, onClose }) => {
 
     const detalleCart = cart.map(product => `${product.quantity} ${product.name}`).join(', ')
     const mensaje = `Hola! Mi nombre es ${nombre}. Me contacto desde su página web para preguntar por la compra de:
-    
-        *${detalleCart}*
-    
-        *Ciudad:* ${ciudad}
-        *Barrio:* ${barrio}
-        *Forma de pago:* ${pago}`;
+
+*${detalleCart}* 
+*Ciudad:* ${ciudad}
+*Barrio:* ${barrio}
+*Precio total:* ${formatPrice(cart.reduce((total, product) => total + (parsePrice(product.price) * product.quantity), 0))}
+*Forma de pago:* ${pago}`;
 
     const numeroTel = '5493516126331';
 

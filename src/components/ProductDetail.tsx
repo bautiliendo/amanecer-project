@@ -19,7 +19,6 @@ export const ProductDetail = () => {
     const apiUrl = import.meta.env.VITE_API_URL
     axios.get(`${apiUrl}/getProducts`)
       .then(response => {
-        console.log("Received data:", response.data);
         const sortedProducts = response.data.sort((a: Product, b: Product) => {
           return a.name.localeCompare(b.name);
         });
