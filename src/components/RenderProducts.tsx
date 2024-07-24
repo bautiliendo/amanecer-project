@@ -50,8 +50,8 @@ export const RenderProducts: React.FC = () => {
                                                 alt={product.name}
                                                 className='py-2 px-2' />
                                             <div className='flex flex-col flex-grow items-center'>
-                                                <div className='font-semibold text-center text-sm' style={{ minHeight: '4em' }}>
-                                                    {product.name}
+                                                <div className='font-semibold text-center text-sm' style={{ minHeight: '5em' }}>
+                                                    {(product.name).slice(0,55)}
                                                 </div>
                                                 <span className='font-semibold'>{product.price}</span>
                                             </div>

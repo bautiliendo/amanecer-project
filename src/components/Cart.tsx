@@ -86,7 +86,7 @@ export const Cart: React.FC = () => {
             <div className="md:w-1/3">
               <div className="bg-white shadow-lg overflow-hidden sm:rounded-lg p-6">
                 <h2 className="text-xl font-bold mb-4">Resumen del pedido</h2>
-                <div className="space-y-2">
+                <div className="">
                   {cart.map((product) => (
                     <div key={product._id} className="flex justify-between">
                       <span>{product.name.slice(0, 20)}... (x{product.quantity})</span>
@@ -94,7 +94,7 @@ export const Cart: React.FC = () => {
                     </div>
                   ))}
                 </div>
-                <div className="mt-4 pt-4 pb-3.5 border-t border-gray-200">
+                <div className="py-4 border-t border-gray-200">
                   <div className="flex justify-between font-bold">
                     <span>Total</span>
                     <span>{formatPrice(calculateTotal())}</span>
@@ -102,7 +102,7 @@ export const Cart: React.FC = () => {
                 </div>
                 <button
                   onClick={() => setOpenModal(true)}
-                  className="w-full mt-6 flex items-center justify-center gap-2 px-4 py-2.5 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition"
+                  className="w-full my-6 flex items-center justify-center gap-2 px-4 py-2.5 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition"
                 >
                   <FaWhatsapp size={20} />
                   Confirmar compra
