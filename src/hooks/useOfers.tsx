@@ -17,7 +17,7 @@ export const useOfers = () => {
     useEffect(() => {
         axios.get('https://backend-amanecer.up.railway.app/getProducts')
             .then(response => {
-                console.log("Received data:", response.data);
+                // console.log("Received data:", response.data);
                 const promotionalSlides = response.data.filter((slide: Slide) => slide.isOnPromotion);
                 setSlides(promotionalSlides);
             })
