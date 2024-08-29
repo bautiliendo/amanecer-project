@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom"
 import { Products } from "./Products"
-import { Ofertas } from "./Ofertas";
+
 import { Button } from "./common/Button";
+import Ofertas from "./Ofertas";
 
 export const Hero: React.FC = () => {
   const navigate = useNavigate();

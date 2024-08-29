@@ -1,48 +1,52 @@
-import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
-import { RxDotFilled } from "react-icons/rx";
-import { useOfers } from "../hooks/useOfers";
-import { Link } from "react-router-dom";
-import { SkeletonOfertas } from "./SkeletonOfertas";
+import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+import type { SwiperProps } from 'swiper/react';
 
-export const Ofertas = () => {
-    const { slides, currentIndex, prevSlide, nextSlide, goToSlide } = useOfers();
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
-    if (!slides.length) {
-        return <SkeletonOfertas />;
-    }
+import { useOfers } from '../hooks/useOfers';
+import { SkeletonOfertas } from './SkeletonOfertas';
+import { Link } from 'react-router-dom';
+
+const Ofertas: React.FC = () => {
+    const { offers, loading, error } = useOfers();
+
+    if (loading) return <SkeletonOfertas />
+    if (error) return <p className="text-center text-red-500">{error}</p>;
+
+    const swiperParams: SwiperProps = {
+        modules: [Navigation, Pagination],
+        spaceBetween: 10,
+        slidesPerView: 1,
+        navigation: true,
+        pagination: { clickable: true },
+        loop: true,
+    };
 
     return (
-        <div className="mt-2">
-            <h2 className="text-xl text-[#68270C] font-bold py-1">OFERTAS SEMANALES</h2>
-            <div className="relative group">
-                <Link to={`/products/${encodeURIComponent(slides[currentIndex].name)}`} className='w-full h-full flex flex-col items-center'>
-                    <div className="w-full max-h-[600px] bg-white border-solid border-2 rounded-lg shadow-lg flex flex-col items-center justify-center">
-                        <img
-                            src={slides[currentIndex].images[1]}
-                            alt={slides[currentIndex].name}
-                            className="max-w-full max-h-[600px] object-contain"
-                        />
-                    </div>
-
-                </Link>
-                <div className="absolute top-1/2 -translate-y-1/2 left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
-                    <BsChevronCompactLeft onClick={prevSlide} size={30} />
-                </div>
-                <div className="absolute top-1/2 -translate-y-1/2 right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
-                    <BsChevronCompactRight onClick={nextSlide} size={30} />
-                </div>
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex justify-center py-2">
-                    {slides.map((_, slideIndex) => (
-                        <div
-                            key={slideIndex}
-                            onClick={() => goToSlide(slideIndex)}
-                            className="text-2xl cursor-pointer"
-                        >
-                            <RxDotFilled className={slideIndex === currentIndex ? 'text-blue-500' : 'text-gray-300'} />
-                        </div>
-                    ))}
-                </div>
-            </div>
+        <div className="w-full max-w-4xl mx-auto">
+            <Swiper {...swiperParams} className="w-full">
+                {offers.map((offer) => (
+                    <SwiperSlide key={offer._id} className="flex flex-col items-center p-4">
+                        <Link to={`/products/${encodeURIComponent(offer.name)}`}>
+                            <div className="relative w-full aspect-w-16 aspect-h-9">
+                                <img
+                                    src={offer.images[1]} // Usamos la segunda imagen del array
+                                    loading="lazy"
+                                    className="object-cover w-full h-full"
+                                    alt={offer.name}
+                                />
+                            </div>
+                        </Link>
+                    </SwiperSlide>
+                ))}
+            </Swiper>
         </div>
     );
-}
+};
+
+export default Ofertas;

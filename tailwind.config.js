@@ -15,5 +15,11 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // Usa una función que retorna una promesa para importar el plugin
+    async () => {
+      const aspectRatio = await import('@tailwindcss/aspect-ratio');
+      return aspectRatio.default;
+    },
+  ],
 };
