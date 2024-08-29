@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 export const SkeletonOfertas = () => (
     <div className="w-full max-w-4xl mx-auto animate-pulse">
