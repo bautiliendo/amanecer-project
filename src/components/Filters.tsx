@@ -1,16 +1,9 @@
-import Cosmetologia from '../assets/unsplash-2-.webp'
-import FraganciaMasc from '../assets/fraganciamasc.jpg'
-import FraganciasFem from '../assets/fraganciafem.jpg'
-import Bebes from '../assets/bebe.jpg'
-import Cremas from '../assets/crema.jpg'
-import Aromatizantes from '../assets/aromatizantes.jpg'
-import Bienestar from '../assets/bienestar.jpg'
-
-import React from "react";
 import { useFilters } from '../hooks/useFilters'
+import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 export const Filters: React.FC = () => {
-  const { setFilters, setShowMore } = useFilters();
+  const { setFilters, setShowMore, filters } = useFilters();
+  const { isOpen, setIsOpen } = useFilters();
 
   const handleChangeCategory = (event: React.MouseEvent<HTMLButtonElement>) => {
     setFilters({
@@ -18,21 +11,68 @@ export const Filters: React.FC = () => {
       searched: ''
     });
     setShowMore(false);
+    setIsOpen(false);
+
   }
 
+  const toggleMenu = () => setIsOpen(!isOpen);
+
+  const categories = [
+    { value: 'babies', label: 'Babies' },
+    { value: 'vespero', label: 'Vespero' },
+    { value: 'wanna-be', label: 'Wanna Be' },
+    { value: 'croma', label: 'Croma' },
+    { value: 'deco-esencias', label: 'Deco Esencias' },
+    { value: 'deco-oriental', label: 'Deco Oriental' },
+    { value: 'etape', label: 'Étape' },
+    { value: 'fragancia-femenina', label: 'Fragancia Fem.' },
+    { value: 'fragancia-masculina', label: 'Fragancia Masc.' },
+    { value: 'semplice', label: 'Semplice' },
+    // { value: 'box', label: 'Box' },
+    { value: 'patagonia', label: 'Patagonia' },
+    { value: 'style', label: 'Style' },
+    { value: 'bioetape', label: 'Bioétape' },
+  ];
+
   return (
-    <div className="w-full overflow-x-auto mb-5">
-      <div className='flex flex-col'>
-        <div className="inline-flex min-w-max px-4 justify-center">
-          <ul className="flex gap-6">
-            <li><button onClick={handleChangeCategory} value='fragancia-masculina' className="border border-gray-100 font-medium px-2 py-2 hover:rounded-md flex flex-col items-center transition-transform transform hover:border-gray-300" >Fragancia Masc.<img src={FraganciaMasc} style={{ width: 90, height: 80 }} className='rounded-xl object-cover' /> </button></li>
-            <li><button onClick={handleChangeCategory} value='fragancia-femenina' className="border border-gray-100 font-medium px-2 py-2 hover:rounded-md flex flex-col items-center transition-transform transform hover:border-gray-300" >Fragancia Fem.<img src={FraganciasFem} style={{ width: 90, height: 80 }} className='rounded-xl object-cover' /> </button></li>
-            <li><button onClick={handleChangeCategory} value='bienestar' className="border border-gray-100 font-medium px-2 py-2 hover:rounded-md flex flex-col justify-center align-middle items-center transition-transform transform hover:border-gray-300" >Bienestar<img src={Bienestar} style={{ width: 90, height: 80 }} className='rounded-xl object-cover' /></button></li>
-            <li><button onClick={handleChangeCategory} value='piel' className="border border-gray-100 font-medium px-2 py-2 hover:rounded-md flex flex-col justify-center align-middle items-center transition-transform transform hover:border-gray-300" >Cremas<img src={Cremas} style={{ width: 90, height: 80 }} className='rounded-xl object-cover' /></button></li>
-            <li><button onClick={handleChangeCategory} value='cosmetologia' className="border border-gray-100 font-medium px-2 py-2 hover:rounded-md flex flex-col justify-center align-middle items-center transition-transform transform hover:border-gray-300" >Cosmetología<img src={Cosmetologia} style={{ width: 90, height: 80 }} className='rounded-xl object-cover' /></button></li>
-            <li><button onClick={handleChangeCategory} value='aromatizante' className="border border-gray-100 font-medium px-2 py-2 hover:rounded-md flex flex-col justify-center align-middle items-center transition-transform transform hover:border-gray-300" >Aromatizantes<img src={Aromatizantes} style={{ width: 90, height: 80 }} className='rounded-xl object-cover' /></button></li>
-            <li><button onClick={handleChangeCategory} value='bebes-ninos' className="border border-gray-100 font-medium px-2 py-2 hover:rounded-md flex flex-col justify-center align-middle items-center transition-transform transform hover:border-gray-300" >Bebes - Niños<img src={Bebes} style={{ width: 90, height: 80 }} className='rounded-xl object-cover' /></button></li>
-          </ul>
+    <div className="w-full mb-5">
+      <button
+        className="flex items-center text-black bg-[#F2E7DD] rounded-md  transition-all duration-300 px-4 py-6"
+        onClick={toggleMenu}
+      >
+        <span className="text-xl font-bold">Categorías</span>
+        <AiOutlineMenu className="mx-2 text-black" />
+        <span className="text-xl font-bold">{filters.category.toUpperCase()}</span>
+      </button>
+
+      {/* Overlay */}
+      <div
+        className={isOpen ? 'fixed left-0 top-0 w-full h-full z-50 bg-black bg-opacity-30' : 'hidden'}
+        onClick={toggleMenu}
+      ></div>
+
+      {/* Sidebar */}
+      <div
+        className={`fixed top-0 left-0 h-full w-72 bg-[#F2E7DD] z-50 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'
+          }`}
+      >
+        <div className="flex justify-between items-center p-4 border-b pt-9">
+          <h2 className="text-xl font-bold text-black">Categorías</h2>
+          <button onClick={toggleMenu} className="text-black">
+            <AiOutlineClose size={24} />
+          </button>
+        </div>
+        <div className="p-4">
+          {categories.map((category) => (
+            <button
+              key={category.value}
+              onClick={handleChangeCategory}
+              value={category.value}
+              className="w-full text-black font-medium py-2 px-4 rounded-md flex justify-start items-center transition-all duration-300 hover:bg-gray-200 mb-2"
+            >
+              {category.label}
+            </button>
+          ))}
         </div>
       </div>
     </div>

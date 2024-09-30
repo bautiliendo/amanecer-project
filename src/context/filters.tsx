@@ -5,6 +5,7 @@ export const FiltersContext = createContext<FiltersContextType | undefined>(unde
 
 export const FiltersProvider: React.FC<ProviderProps> = ({ children }) => {
     const [showMore, setShowMore] = useState<boolean>(false);
+    const [isOpen, setIsOpen] = useState(false);
     const [filters, setFilters] = useState({
         category: 'fragancia-masculina',
         searched: ''
@@ -30,7 +31,7 @@ export const FiltersProvider: React.FC<ProviderProps> = ({ children }) => {
     };
 
     return (
-        <FiltersContext.Provider value={{ filters, setFilters, filterProducts, showMore, setShowMore }}>
+        <FiltersContext.Provider value={{ filters, setFilters, filterProducts, showMore, setShowMore, isOpen, setIsOpen }}>
             {children}
         </FiltersContext.Provider>
     )

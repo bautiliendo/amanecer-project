@@ -48,7 +48,7 @@ export const RenderProducts: React.FC = () => {
                                                 style={{ width: 200, maxHeight: 200, minHeight: 160 }}
                                                 src={product.images[0]}
                                                 alt={product.name}
-                                                className='py-2 px-2' />
+                                                className='py-2 px-2'/>
                                             <div className='flex flex-col flex-grow items-center'>
                                                 <div className='font-semibold text-center text-sm' style={{ minHeight: '5em' }}>
                                                     {(product.name).slice(0,55)}

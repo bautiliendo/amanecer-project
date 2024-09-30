@@ -4,16 +4,20 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from '../../assets/logo.jpg'
 import { SearchBar } from "./SearchBar";
 import { useCart } from "../../hooks/useCart";
+import { useFilters } from "../../hooks/useFilters";
 
 export const NavBar: React.FC = () => {
     const { cart } = useCart();
-
     const [nav, setNav] = useState<boolean>(false);
     const { pathname } = useLocation();
     const navigate = useNavigate();
+    const { isOpen, setIsOpen } = useFilters();
 
     const handleNav = () => {
         setNav(!nav);
+        if (isOpen) {
+            setIsOpen(false);
+        } else return
     }
 
     const cartQuantity = useMemo(() => {

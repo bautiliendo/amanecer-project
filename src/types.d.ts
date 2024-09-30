@@ -40,6 +40,8 @@ export interface FiltersType {
 //TYPES filter context
 
 export interface FiltersContextType {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   showMore: boolean;
   setShowMore: React.Dispatch<React.SetStateAction<boolean>>;
   filters: FiltersType;
