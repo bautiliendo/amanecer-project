@@ -10,7 +10,7 @@ import 'swiper/css/pagination';
 
 import { useOfers } from '../hooks/useOfers';
 import { SkeletonOfertas } from './SkeletonOfertas';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const Ofertas: React.FC = () => {
     const { offers, loading, error } = useOfers();
@@ -32,16 +32,16 @@ const Ofertas: React.FC = () => {
             <Swiper {...swiperParams} className="w-full">
                 {offers.map((offer) => (
                     <SwiperSlide key={offer._id} className="flex flex-col items-center p-4">
-                        <Link to={`/products/${encodeURIComponent(offer.name)}`}>
-                            <div className="relative w-full aspect-w-16 aspect-h-9">
-                                <img
-                                    src={offer.images[1]} // Usamos la segunda imagen del array
-                                    loading="lazy"
-                                    className="object-cover w-full h-full"
-                                    alt={offer.name}
-                                />
-                            </div>
-                        </Link>
+                        {/* <Link to={`/products/${encodeURIComponent(offer.name)}`}> */}
+                        <div className="relative w-full aspect-w-16 aspect-h-9">
+                            <img
+                                src={offer.images[0]} // Usamos la segunda imagen del array
+                                loading="lazy"
+                                className="object-cover w-full h-full"
+                                alt={offer.name}
+                            />
+                        </div>
+                        {/* </Link> */}
                     </SwiperSlide>
                 ))}
             </Swiper>
