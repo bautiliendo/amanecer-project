@@ -1,3 +1,4 @@
+import React from 'react';
 import { useFilters } from '../hooks/useFilters'
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
@@ -12,7 +13,6 @@ export const Filters: React.FC = () => {
     });
     setShowMore(false);
     setIsOpen(false);
-
   }
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -37,7 +37,7 @@ export const Filters: React.FC = () => {
   return (
     <div className="w-full mb-5">
       <button
-        className="flex items-center text-black bg-[#F2E7DD] rounded-md  transition-all duration-300 px-4 py-6"
+        className="flex items-center text-black bg-[#F2E7DD] rounded-md transition-all duration-300 px-4 py-6"
         onClick={toggleMenu}
       >
         <span className="text-xl font-bold">Categorías</span>
@@ -53,8 +53,9 @@ export const Filters: React.FC = () => {
 
       {/* Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full w-72 bg-[#F2E7DD] z-50 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'
-          }`}
+        className={`fixed top-0 left-0 h-full w-72 bg-[#F2E7DD] z-50 transform transition-transform duration-300 ease-in-out ${
+          isOpen ? 'translate-x-0' : '-translate-x-full'
+        } flex flex-col`}
       >
         <div className="flex justify-between items-center p-4 border-b pt-9">
           <h2 className="text-xl font-bold text-black">Categorías</h2>
@@ -62,7 +63,7 @@ export const Filters: React.FC = () => {
             <AiOutlineClose size={24} />
           </button>
         </div>
-        <div className="p-4">
+        <div className="p-4 overflow-y-auto flex-grow">
           {categories.map((category) => (
             <button
               key={category.value}
